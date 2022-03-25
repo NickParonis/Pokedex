@@ -26,8 +26,7 @@ $(document).ready( () => {
 
     let pokemon = []
     let fetchPokemon = () => {
-        
-        for ( let i = 1; i <= 151; i++){
+        for ( let i = 1; i <= 701; i++){
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
             fetch(url)
             .then( res => {
@@ -48,6 +47,7 @@ $(document).ready( () => {
     };
     fetchPokemon();
     $(document.body).on("click", ".test", function(){
+        $(".pokemonArea").empty();
         pokemon.forEach( el => {
             let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
             let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
@@ -56,7 +56,13 @@ $(document).ready( () => {
             $(".pokemonArea").append(pokemonCardHtmlDiv)
         })
     })
+    $(document).on('click', '#flexSwitchCheckDefault', function(){
+        $('.selectizeDiv').toggleClass('hide')
+        console.log("test")
+    })
 });
+
+
 
 
 //<div class="pokemon-card">
