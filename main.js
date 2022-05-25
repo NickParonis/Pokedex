@@ -24,7 +24,7 @@ $(document).ready( () => {
         placeholder: "Select type"
     });
 
-    let pokemon = []
+    let pokemons = []
     let fetchPokemon = () => {
         for ( let i = 1; i <= 701; i++){
             let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
@@ -41,24 +41,39 @@ $(document).ready( () => {
                         return type.type.name
                     })
                 };
-                pokemon[data.id] = currentPokemon;
+                pokemons[data.id] = currentPokemon;
             });
         };
     };
     fetchPokemon();
     $(document.body).on("click", ".test", function(){
+        let radioValue1 = $("#flexRadioDefault1").is(":checked");
+        let radioValue2 = $("#flexRadioDefault2").is(":checked");
         $(".pokemonArea").empty();
-        pokemon.forEach( el => {
-            let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
-            let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
-            let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
-            let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
-            $(".pokemonArea").append(pokemonCardHtmlDiv)
-        })
+        if(radioValue1){
+            pokemons.filter( pokemon => pokemon.id < 152).forEach( el => {
+                let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
+                let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
+                let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
+                let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
+                $(".pokemonArea").append(pokemonCardHtmlDiv)
+            })
+        }
+        else{
+            pokemons.forEach( el => {
+                let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
+                let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
+                let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
+                let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
+                $(".pokemonArea").append(pokemonCardHtmlDiv)
+            })
+        }
+
+
     })
     $(document).on('click', '#flexSwitchCheckDefault', function(){
-        $('.selectizeDiv').toggleClass('hide')
-        console.log("test")
+        // $('.selectizeDiv').toggleClass('hide')
+        // console.log("test")
     })
 });
 
