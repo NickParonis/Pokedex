@@ -134,6 +134,10 @@ ul{
   background: rgb(112,83,72);
   background: linear-gradient(90deg, rgba(112,83,72,1) 0%, rgba(112,88,72,1) 49%, rgba(112,98,72,1) 100%);
 }
+.fairy{
+  background: rgb(214,133,205);
+  background: linear-gradient(90deg, rgba(214,133,205,1) 0%, rgba(214,133,173,1) 49%, rgba(214,133,162,1) 100%);
+}
 
 .searchContainer{
   margin-top: 50px;
