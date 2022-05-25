@@ -19,15 +19,27 @@ $(document).ready( () => {
             })
             .then( data => {
                 let currentPokemon = {
-                    name: data.name,
+                    name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
                     id: data.id,
                     image: data.sprites['front_default'],
+                    imageshiny: data.sprites['front_shiny'],
+                    imageback: data.sprites['back_default'],
+                    imagebackshiny: data.sprites['back_shiny'],
                     type: data.types.map( type => {
                         return type.type.name
-                    })
+                    }),
+                    HP: data.stats[0].base_stat,
+                    ATK: data.stats[1].base_stat,
+                    DEF: data.stats[2].base_stat,
+                    SPATK: data.stats[3].base_stat,
+                    SPDEF: data.stats[4].base_stat,
+                    SPEED: data.stats[5].base_stat,
+                    height: data.height,
+                    weight: data.weight
                 };
                 pokemons[data.id] = currentPokemon;
             });
+            
         };
     };
     fetchPokemon();
@@ -97,33 +109,3 @@ $(document).ready( () => {
         $('.selectizeDiv').toggleClass('hide')
     })
 });
-
-// divImage = `<div class="image ${el.type[0]}"><img src="${el.image}" alt="Avatar">`
-// divPokeName = `<div class="pokename"><h6>${el.name}</h6></div>`
-// divPokeContent = `<div class="pokecontent"><ul class="stats"><h5>1</h5><h5>2</h5></ul></div>`
-// divPokeCardFront = `<div class="pokemon-card-front">` + divImage + divPokeName + divPokeContent + `</div>`
-// divPokeCardInner = `<div class="pokemon-card-inner">` + divPokeCardFront + `</div>`
-// divPokeCard = `<div class="pokemon-card">` + divPokeCardInner + `</div>`
-// $(".pokemonArea").append(pokemonCardHtmlDiv)
-/*  <div class="pokemon-card">
-        <div class="pokemon-card-inner">
-            <div class="pokemon-card-front">
-                <div class="image grass">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Avatar">
-                </div>
-                <div class="pokename">
-                    <h6>bulbasaur</h6>
-                </div>
-                <div class="pokecontent">
-                    <ul class="stats">
-                        <h5>1</h5>
-                        <h5>2</h5>
-                        <h5>3</h5>
-                    </ul>
-                </div>
-            </div>
-            <div class="pokemon-card-back">
-                <img src="images/pokemoncardBack.png" style="width: 101%;">
-            </div>
-        </div>
-    </div> */
