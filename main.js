@@ -3,7 +3,7 @@ $(document).ready( () => {
     const appendPokemon = (el) => {
         divImage = `<div class="image ${el.type[0]}"><img src="${el.image}" alt="Avatar"></div>`
         divPokeName = `<div class="pokename"><h6>${el.name}</h6></div>`
-        divPokeContent = `<div class="pokecontent"><ul class="stats"><h5>1</h5><h5>2</h5></ul></div>`
+        divPokeContent = `<div class="pokecontent"><ul class="stats"><h6>HP: ${el.HP}</h6><h6>Attack: ${el.ATK}</h6><h6>Defence: ${el.DEF}</h6><h6>Sp.Attack: ${el.SPATK}</h6><h6>Sp.Defence: ${el.SPDEF}</h6><h6>Speed: ${el.SPEED}</h6></div>`
         divPokeCardFront = `<div class="pokemon-card-front">` + divImage + divPokeName + divPokeContent + `</div>`
         divPokeCardBack =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
         divPokeCardInner = `<div class="pokemon-card-inner">` + divPokeCardFront + divPokeCardBack +`</div>`
@@ -39,7 +39,6 @@ $(document).ready( () => {
                 };
                 pokemons[data.id] = currentPokemon;
             });
-            
         };
     };
     fetchPokemon();
