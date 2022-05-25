@@ -1,11 +1,14 @@
 $(document).ready( () => {
     let pokemons = []
     const appendPokemon = (el) => {
-        let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
-        let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
-        let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
-        let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
-        $(".pokemonArea").append(pokemonCardHtmlDiv)
+        divImage = `<div class="image ${el.type[0]}"><img src="${el.image}" alt="Avatar"></div>`
+        divPokeName = `<div class="pokename"><h6>${el.name}</h6></div>`
+        divPokeContent = `<div class="pokecontent"><ul class="stats"><h5>1</h5><h5>2</h5></ul></div>`
+        divPokeCardFront = `<div class="pokemon-card-front">` + divImage + divPokeName + divPokeContent + `</div>`
+        divPokeCardBack =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
+        divPokeCardInner = `<div class="pokemon-card-inner">` + divPokeCardFront + divPokeCardBack +`</div>`
+        divPokeCard = `<div class="pokemon-card">` + divPokeCardInner + `</div>`
+        $(".pokemonArea").append(divPokeCard)
     }
     const fetchPokemon = () => {
         for ( let i = 1; i <= 701; i++){
@@ -94,3 +97,33 @@ $(document).ready( () => {
         $('.selectizeDiv').toggleClass('hide')
     })
 });
+
+// divImage = `<div class="image ${el.type[0]}"><img src="${el.image}" alt="Avatar">`
+// divPokeName = `<div class="pokename"><h6>${el.name}</h6></div>`
+// divPokeContent = `<div class="pokecontent"><ul class="stats"><h5>1</h5><h5>2</h5></ul></div>`
+// divPokeCardFront = `<div class="pokemon-card-front">` + divImage + divPokeName + divPokeContent + `</div>`
+// divPokeCardInner = `<div class="pokemon-card-inner">` + divPokeCardFront + `</div>`
+// divPokeCard = `<div class="pokemon-card">` + divPokeCardInner + `</div>`
+// $(".pokemonArea").append(pokemonCardHtmlDiv)
+/*  <div class="pokemon-card">
+        <div class="pokemon-card-inner">
+            <div class="pokemon-card-front">
+                <div class="image grass">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Avatar">
+                </div>
+                <div class="pokename">
+                    <h6>bulbasaur</h6>
+                </div>
+                <div class="pokecontent">
+                    <ul class="stats">
+                        <h5>1</h5>
+                        <h5>2</h5>
+                        <h5>3</h5>
+                    </ul>
+                </div>
+            </div>
+            <div class="pokemon-card-back">
+                <img src="images/pokemoncardBack.png" style="width: 101%;">
+            </div>
+        </div>
+    </div> */

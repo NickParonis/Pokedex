@@ -4,6 +4,10 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+ul{
+  padding: 0;
+  margin: 0;
+}
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .pokemon-card {
@@ -23,6 +27,7 @@
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
+
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .pokemon-card:hover .pokemon-card-inner {
@@ -45,8 +50,9 @@
 
 /* Style the front side (fallback if image is missing) */
 .pokemon-card-front {
-  background-color: #bbb;
+  background-color: #dbdbdb;
   color: black;
+  border: 9px solid yellow;
 }
 
 /* Style the back side */
@@ -61,55 +67,72 @@
 
 /* types */
 .grass{
-  background-color: #78C850;
+  background: rgb(40,181,101);
+  background: linear-gradient(90deg, rgba(40,181,101,1) 0%, rgba(84,181,35,1) 49%, rgba(142,181,40,1) 100%);
 }
 .normal{
-  background-color: #A8A878
+  background: rgb(168,152,120);
+  background: linear-gradient(90deg, rgba(168,152,120,1) 0%, rgba(168,168,120,1) 49%, rgba(146,168,120,1) 100%);
 }
 .fire{
-  background-color: #F08030
+  background: rgb(240,89,48);
+  background: linear-gradient(90deg, rgba(240,89,48,1) 0%, rgba(240,128,48,1) 49%, rgba(240,173,48,1) 100%);
 }
 .water{
-  background-color: #6890F0
+  background: rgb(104,175,240);
+  background: linear-gradient(90deg, rgba(104,175,240,1) 0%, rgba(104,144,240,1) 49%, rgba(104,118,240,1) 100%);
 }
 .flying{
-  background-color: #A890F0
+  background: rgb(153,144,240);
+  background: linear-gradient(90deg, rgba(153,144,240,1) 0%, rgba(168,144,240,1) 49%, rgba(184,144,240,1) 100%);  
 }
 .fighting{
-  background-color: #C03028
+  background: rgb(192,40,40);
+  background: linear-gradient(90deg, rgba(192,40,40,1) 0%, rgba(192,48,40,1) 49%, rgba(192,75,40,1) 100%);
 }
 .poison{
-  background-color: #A040A0
+  background: rgb(133,64,160);
+  background: linear-gradient(90deg, rgba(133,64,160,1) 0%, rgba(160,64,160,1) 49%, rgba(160,64,147,1) 100%);
 }
 .electric{
-  background-color: #F8D030
+  background: rgb(248,185,48);
+  background: linear-gradient(90deg, rgba(248,185,48,1) 0%, rgba(248,208,48,1) 49%, rgba(247,248,48,1) 100%);
 }
 .ground{
-  background-color: #E0C068
+  background: rgb(224,186,104);
+  background: linear-gradient(90deg, rgba(224,186,104,1) 0%, rgba(224,192,104,1) 49%, rgba(224,205,104,1) 100%);
 }
 .rock{
-  background-color: #B8A038
+  background: rgb(184,150,56);
+  background: linear-gradient(90deg, rgba(184,150,56,1) 0%, rgba(184,160,56,1) 49%, rgba(184,174,56,1) 100%);
 }
 .psychic{
-  background-color: #F85888
+  background: rgb(248,88,185);
+  background: linear-gradient(90deg, rgba(248,88,185,1) 0%, rgba(248,88,136,1) 49%, rgba(248,88,113,1) 100%);
 }
 .ice{
-  background-color: #98D8D8
+  background: rgb(152,216,202);
+  background: linear-gradient(90deg, rgba(152,216,202,1) 0%, rgba(152,216,216,1) 49%, rgba(152,196,216,1) 100%);
 }
 .bug{
-  background-color: #A8B820
+  background: rgb(181,184,32);
+  background: linear-gradient(90deg, rgba(181,184,32,1) 0%, rgba(168,184,32,1) 49%, rgba(140,184,32,1) 100%);
 }
 .ghost{
-  background-color: #705898
+  background: rgb(103,88,152);
+  background: linear-gradient(90deg, rgba(103,88,152,1) 0%, rgba(112,88,152,1) 49%, rgba(122,88,152,1) 100%);
 }
 .steel{
-  background-color: #B8B8D0
+  background: rgb(184,191,208);
+  background: linear-gradient(90deg, rgba(184,191,208,1) 0%, rgba(184,184,208,1) 49%, rgba(193,184,208,1) 100%);
 }
 .dragon{
-  background-color: #7038F8
+  background: rgb(72,56,248);
+  background: linear-gradient(90deg, rgba(72,56,248,1) 0%, rgba(112,56,248,1) 49%, rgba(162,56,248,1) 100%);
 }
 .dark{
-  background-color: #705848
+  background: rgb(112,83,72);
+  background: linear-gradient(90deg, rgba(112,83,72,1) 0%, rgba(112,88,72,1) 49%, rgba(112,98,72,1) 100%);
 }
 
 .searchContainer{
@@ -187,3 +210,33 @@
  .hide{
    display: none;
  }
+
+
+ 
+.pokename{
+  color: white;
+  background-color: black;
+  display: inline-block;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 5px;
+  position: relative;
+  top: -22px;
+}
+.pokename > h6{
+  margin-bottom: 0.2rem;
+}
+
+.image{
+  height: 50%;
+  padding-top: 4px;
+  border: 2px solid yellow;
+  margin: 5px;
+}
+
+.pokecontent{
+  height: 50%;
+  position: relative;
+  top: -33px;
+  padding-top: 20px;
+}
