@@ -49,46 +49,57 @@ $(document).ready( () => {
     $(document.body).on("click", ".test", function(){
         let radioValue1 = $("#flexRadioDefault1").is(":checked");
         let radioValue2 = $("#flexRadioDefault2").is(":checked");
+        let typeRadio = $("#flexSwitchCheckDefault").is(":checked");
+        let pickedPokeType
+        if(typeRadio){
+            pickedPokeType = $(".selectize-input").find(".item").html().toLowerCase()
+        }
         $(".pokemonArea").empty();
-        if(radioValue1){
-            pokemons.filter( pokemon => pokemon.id < 152).forEach( el => {
+        if(radioValue1 && !typeRadio){
+            pokemons
+            .filter( pokemon => pokemon.id < 152)
+            .forEach( el => {
                 let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
                 let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
                 let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
                 let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
                 $(".pokemonArea").append(pokemonCardHtmlDiv)
-            })
+            });
         }
-        else{
+        if(radioValue1 && typeRadio){
+            pokemons
+            .filter( pokemon => pokemon.id < 152)
+            .filter( pokemon => pokemon.type[0] == pickedPokeType)
+            .forEach( el => {
+                let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
+                let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
+                let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
+                let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
+                $(".pokemonArea").append(pokemonCardHtmlDiv)
+            });
+        }
+        if(radioValue2 && !typeRadio){
             pokemons.forEach( el => {
                 let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
                 let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
                 let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
                 let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
                 $(".pokemonArea").append(pokemonCardHtmlDiv)
-            })
+            });
         }
-
-
+        else{
+            pokemons
+            .filter( pokemon => pokemon.type[0] == pickedPokeType)
+            .forEach( el => {
+                let pokemonCardFrontHtmlDiv = `<div class="pokemon-card-front ${el.type[0]}"><h1>${el.name}</h1><img src="${el.image}" alt="Avatar"></div>`
+                let pokemonCardBackHtmlDiv =  `<div class="pokemon-card-back"><img src="images/pokemoncardBack.png" style="width: 101%;"></div>`
+                let pokemonCardInnerHtmlDiv = `<div class="pokemon-card-inner">` + pokemonCardFrontHtmlDiv + pokemonCardBackHtmlDiv + `</div>`
+                let pokemonCardHtmlDiv =  `<div class="pokemon-card">` + pokemonCardInnerHtmlDiv + `</div>`
+                $(".pokemonArea").append(pokemonCardHtmlDiv)
+            });
+        }
     })
     $(document).on('click', '#flexSwitchCheckDefault', function(){
-        // $('.selectizeDiv').toggleClass('hide')
-        // console.log("test")
+        $('.selectizeDiv').toggleClass('hide')
     })
 });
-
-
-
-
-//<div class="pokemon-card">
-//    <div class="pokemon-card-inner">
-//        <div class="pokemon-card-front">
-//            <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
-//        </div>
-//        <div class="pokemon-card-back">
-//            <h1>John Doe</h1>
-//            <p>Architect & Engineer</p>
-//            <p>We love that guy</p>
-//        </div>
-//    </div>
-//</div>
